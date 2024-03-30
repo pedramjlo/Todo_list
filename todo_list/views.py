@@ -61,13 +61,38 @@ class GetTasks(APIView):
 
 
 
-class GetCategory(APIView):
+class GetCategories(APIView):
 
     permission_classes = [permissions.AllowAny,]
 
     def get(self, request):
         categories = [f"{category.user}: {category.name}" for category in Category.objects.all()]
         return Response(categories)
+    
+
+
+class GetTask(APIView):
+    permission_class = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        try:
+            task = Task.objects.get(id=kwargs['pk'])
+            serializer = TaskSerializer(task)
+            return Response(serializer.data)
+        except Task.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        
+
+class GetCategory(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        try:
+            category = Category.objects.get(id=kwargs['pk'])
+            serializer = CategorySerializer(category)
+            return Response(serializer.data)
+        except Category.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
     
 
 
