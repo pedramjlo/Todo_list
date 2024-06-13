@@ -15,4 +15,5 @@ and APIView for Loggin in and displaying a list of all users sotred by CustomUse
 
 
 # DRF API Views
-A variaty of generic DRF API view have been used including CreateAPIView, RetrieveUpdateAPIView, DestroyAPIView and the basic APIView in order to CRUD data.
+A variaty of generic DRF API view have been used including CreateAPIView, RetrieveUpdateAPIView, DestroyAPIView and the basic APIView in order to CRUD data. Used
+both in account & todo_project apps.
